@@ -1,0 +1,7 @@
+$(function() {
+    navbar();
+
+    checkSecure((data)=>{
+        
+    })
+})

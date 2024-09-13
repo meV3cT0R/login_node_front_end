@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <title>User edit</title>
+</head>
+<body>
+    <div id="root">
+        <form id="editUser">
+            <div>
+                <h1>
+                    Edit User
+                </h1>
+            </div>
+            <div>
+                <p id="login_error">
+
+                </p>
+            </div>
+
+            <div>
+                <label for="first_name"> First Name </label>
+                <input type="text" id="first_name">
+            </div>
+            <div>
+                <label for="last_name"> Last Name </label>
+                <input type="text" id="last_name">
+            </div>
+            <div>
+                <label for="username"> Username </label>
+                <input type="text" id="username">
+            </div>
+
+            <div>
+                <label for="phone"> Phone </label>
+                <input type="text" id="phone">
+            </div>
+            <div>
+                <label for="gender"> gender </label>
+                <input type="radio"  value="male" name="gender" checked> male
+                <input type="radio"  value="female" name="gender"> female
+            </div>
+            
+            <div>
+                <button>
+                        edit
+                </button>
+            </div>
+    </div>
+
+    <script src="../js/constants.js"> </script>
+    <script src="../js/utils.js"> </script>
+    <script src="../js/edit.js"> </script>
+</body>
+</html>
