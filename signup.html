@@ -1,64 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <link href="./css/login.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- <link href="./css/login.css" rel="stylesheet" type="text/css"/> -->
 </head>
 
 <body>
-    <div>
-        <form id="signup">
-            <div>
-                <h1>
-                    Sign up
-                </h1>
-            </div>
-            <div>
-                <p id="login_error">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 mx-auto ">
+                <form id="signup" class="border  py-3 px-5 rounded shadow ">
+                    <div class="mb-4 text-center text-secondary ">
+                        <h1>
+                            Sign up
+                        </h1>
+                    </div>
+                    <div class="form-group mb-4">
+                        <p id="login_error">
 
-                </p>
+                        </p>
+                    </div>
+
+                    <div class="form-group mb-4 row">
+                        <div class="col">
+                            <label for="first_name"> First Name </label>
+                            <input class="form-control" type="text" id="first_name">
+                        </div>
+                        <div class="col">
+                            <label for="last_name"> Last Name </label>
+                            <input class="form-control" type="text" id="last_name">
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="username"> Username </label>
+                        <input class="form-control" type="text" id="username">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="password"> Password </label>
+                        <input class="form-control" type="password" id="password">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="phone"> Phone </label>
+                        <input class="form-control" type="text" id="phone">
+                    </div>
+
+                    <div>
+                        <label for="gender mb-2"> Gender</label>
+                    </div>
+                    <div class="form-check ">
+                        <label for="male" class="text-capitalize form-check-label"> male </label>
+                        <input type="radio" id="male" value="male" name="gender" checked class="form-check-input">
+                    </div>
+                    <div class="form-check ">
+                        <label for="gender" for="female" class="text-capitalize form-check-label"> female </label>
+                        <input type="radio" id="female" value="female" name="gender" class="form-check-input">
+                    </div>
+                    <div class="form-group mb-4 text-end">
+                        <button class="btn btn-outline-primary">
+                            Sign up
+                        </button>
+                    </div>
+                    <div class="form-group mb-4 text-center">
+                        <a href="/index.html"> Log in</a>
+                    </div>
+                </form>
             </div>
 
-            <div>
-                <label for="first_name"> First Name </label>
-                <input type="text" id="first_name">
-            </div>
-            <div>
-                <label for="last_name"> Last Name </label>
-                <input type="text" id="last_name">
-            </div>
-            <div>
-                <label for="username"> Username </label>
-                <input type="text" id="username">
-            </div>
-            <div>
-                <label for="password"> Password </label>
-                <input type="password" id="password">
-            </div>
-            <div>
-                <label for="phone"> Phone </label>
-                <input type="text" id="phone">
-            </div>
-            <div>
-                <label for="gender"> gender </label>
-                <input type="radio" id="username" value="male" name="gender"> male
-                <input type="radio" id="username" value="female" name="gender"> female
-            </div>
-            
-            <div>
-                <button>
-                        log in
-                </button>
-            </div>
-            <div>
-                <a href="/signup.html"> Sign up </a>
-            </div>
-        </form>
+        </div>
+
     </div>
 
     <script src="./js/constants.js"> </script>
     <script src="./js/signup.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>

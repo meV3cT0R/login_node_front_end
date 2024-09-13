@@ -1,0 +1,6 @@
+table tr th,td {
+    padding:5px 30px;
+}
+#user_detail_heading {
+    text-decoration-line: underline;
+}
