@@ -1,0 +1,55 @@
+* {
+    margin :0;
+    font-family: monospace;
+    padding : 0;
+}
+
+form {
+    width : 30%;
+    padding : 20px 40px;
+    border : 1px solid grey;
+    box-shadow: 5px 2px 5px grey;
+    border-radius: 15px;
+    margin : 0px auto;
+}
+form div {
+    margin-bottom:20px;
+}
+form div input {
+    width : 100%;
+    margin-top:10px;
+    padding:5px 0px;
+    font-size: 1.5rem;
+    border-radius:5px;
+}
+
+form div label {
+    font-weight: 1000;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+}
+form div h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form div:nth-last-child(2) {
+    text-align: right;
+}
+
+form div:nth-last-child(2) button {
+    padding: 5px 10px;
+    cursor:pointer;
+}
+
+#login_error {
+    color:red; 
+    text-align: center;
+}
+form div:last-child {
+    text-align: center;
+}
+
+input[type="radio"] {
+    width: auto;
+}
