@@ -1,6 +1,5 @@
 $(function() {
     navbar();
-
     checkSecure((data)=>{
         
     })

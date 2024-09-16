@@ -2,6 +2,10 @@ const links = [
   {
     link: '/user/home.html',
     display: 'home'
+  },
+  {
+    link: '/student/student_details.html',
+    display: 'student details'
   }
 ]
 
@@ -10,12 +14,14 @@ function navbar () {
     $('<div> </div>')
       .attr('id', 'navbar')
       .addClass(
-        'navbar navbar-expand bg-light d-flex justify-content-between container  align-items-center'
+        'navbar navbar-expand  d-flex justify-content-between container-fluid  align-items-center'
       )
       .css({
-        'marginBottom': '20px',
-        "text-transform" : "capitalize"
-    })
+        marginBottom: '20px',
+        'text-transform': 'capitalize',
+        backgroundColor : "rgba(0,0,0,0.1)",
+        padding: "5px 10px"
+      })
   )
   $('#navbar').append(
     $('<div></div>').append($('<ul></ul>').addClass('navbar-nav'))
@@ -25,24 +31,49 @@ function navbar () {
       $('<li> </li>').append(
         $('<a> </a>')
           .addClass('nav-link')
+          
           .css({
-            padding: '5px 10px'
+            padding: '5px 10px',
+            color: "rgba(0,0,0,0.5)",
+            transition : ".3s"
+          }).hover(function(e){
+              $(this).next().css({
+                  width:"100%"
+              })
+
+              $(this).css({
+                color: "black"
+
+              })
+          },function(e){
+            $(this).next().css({
+                width:"0%"
+            })
+            $(this).css({
+              color: "rgba(0,0,0,0.5)"
+
+            })
           })
           .text(link.display)
-          .attr('href', link.link)
+          .attr('href', link.link),$("<div></div>").css({
+            width:0,
+            height:"1px",
+            backgroundColor : "black",
+            transition : "width .3s"
+          })
       )
     )
   }
   $('#navbar').append(
     // $('<div></div>')
     //   .append(
-        $('<button></button>')
-          .addClass('btn btn-outline-danger')
-          .text('logout')
-          .click(function () {
-            localStorage.removeItem('token')
-            window.open('/', '_self')
-          })
+    $('<button></button>')
+      .addClass('btn btn-outline-danger')
+      .text('logout')
+      .click(function () {
+        localStorage.removeItem('token')
+        window.open('/', '_self')
+      })
     //   )
   )
 }
@@ -70,44 +101,61 @@ function checkSecure (success = d => {}) {
 }
 
 function formGenerator (config) {
-  for (const field of config.fields) {
-    if(field.type==="radio") {
-        $(config.parent).append(
-          $("<div></div>").append(
-            $("<label></label>").addClass("").text(field.label)
+  for (let i = 0; i < config.fields.length; i++) {
+    $(config.parent).append(
+      $('<div> </div>').addClass(`student-form-row-${i} row`).css({
+        marginBottom: '20px'
+      })
+    )
+    for (let j = 0; j < config.fields[i].length; j++) {
+      $(`.student-form-row-${i}`).append(
+        $('<div> </div>').addClass(`student-form-row-${i}-col-${j} col`)
+      )
+      const field = config.fields[i][j]
+      if (field.type === 'radio') {
+        $(`.student-form-row-${i}-col-${j}`).append(
+          $('<div></div>').append(
+            $('<label></label>').addClass('').text(field.label)
           )
         )
-        for(const value of field.values) {
-          $(config.parent).append(
-              $("<div></div>").addClass("form-check ")
-                .append(
-                    $("<label></label>").addClass("form-check-label text-capitalize").text(value.label),
-                    $('<input>')
-                    .attr('type', field.type)
-                    .attr('id', field.name)
-                    .attr('name', field.name)
-                    .attr('value',value.value).addClass("form-check-input")
-                )
+        for (const value of field.values) {
+          $(`.student-form-row-${i}-col-${j}`).append(
+            $('<div></div>')
+              .addClass('form-check ')
+              .append(
+                $('<label></label>')
+                  .addClass('form-check-label text-capitalize')
+                  .text(value.label),
+                $('<input>')
+                  .attr('type', field.type)
+                  .attr('id', field.name)
+                  .attr('name', field.name)
+                  .attr('value', value.value)
+                  .addClass('form-check-input')
+              )
           )
         }
 
-          continue;
+        continue
+      }
+
+      $(`.student-form-row-${i}-col-${j}`).append(
+        $('<div> </div>')
+          .addClass('form-group')
+          .append(
+            $('<label></label>').attr('for', field.id).text(field.label),
+            $('<input>')
+              .attr('type', field.type)
+              .attr('id', field.name)
+              .attr('name', field.name)
+              .addClass('form-control')
+              .change(function(e) {
+                  if(field.onchange)
+                    field.onchange(e)
+              })
+          )
+      )
     }
-    $(config.parent).append(
-      $('<div> </div>')
-        .css({
-          marginBottom: '20px'
-        })
-        .addClass(['form-group'])
-        .append(
-          $('<label></label>').attr('for', field.id).text(field.label),
-          $('<input>')
-            .attr('type', field.type)
-            .attr('id', field.name)
-            .attr('name', field.name)
-            .addClass('form-control')
-        )
-    )
   }
   $(config.parent).append(
     $('<div></div>')
@@ -121,4 +169,18 @@ function formGenerator (config) {
           .text(config.button?.text || 'submit')
       )
   )
+}
+
+function encodeImageFileAsURL (e) {
+  if(e instanceof Event){
+    e = e.target
+  }
+  let file = e.files[0]
+  let reader = new FileReader()
+  reader.onloadend = function () {
+    $(e).attr("data",reader.result)
+    console.log('RESULT', $(e).attr("data"))
+    console.log('RESULT length', $(e).attr("data").length)
+  }
+  reader.readAsDataURL(file)
 }

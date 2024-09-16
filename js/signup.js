@@ -1,4 +1,8 @@
+
+
 $(function() {
+    
+
     $("form#signup").submit(function(e) {
         e.preventDefault();
         $.post(`${url}/signup`,JSON.stringify({
@@ -8,6 +12,7 @@ $(function() {
             last_name : $('input#last_name').val(),
             phone : $('input#phone').val(),
             gender : $('input[name="gender"]').val(),
+            image : $('input#image').attr("data")
         })).done(function(data,status) {
             window.open("/","_self");
         }).fail(function(data,status) {

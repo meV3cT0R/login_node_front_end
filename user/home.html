@@ -15,10 +15,10 @@
 <body>
     <div class="container">
         <div>
-            <h1 id="welcome_user" class="text-secondary mb-4"></h1>
+            <!-- <h1 id="welcome_user" class="text-secondary mb-4"></h1> -->
         </div>
         <div class="row">
-            <div class="col-md-10 col-lg-6 mx-auto shadow py-3 px-4 rounded-pill text-center">
+            <div class="col-md-10 col-lg-8 mx-auto shadow py-3 px-4 rounded-pill text-center border">
                 <div class="d-inline-block">
                     <div class="row mb-4">
                         <div class="col">
@@ -26,29 +26,46 @@
                         </div>
                     </div>
                     <div class="row">
-                        <table class="col text-capitalize d-inline-block text-start">
-                            <tr>
-                                <th>Name</th>
-                                <td> <span id="first_name"> </span> <span id="last_name"> </span></td>
-                            </tr>
-                            <tr>
-                                <th>username</th>
-                                <td> <span id="username"> </span> </td>
-                            </tr>
-                            <tr>
-                                <th>phone</th>
-                                <td> <span id="phone"> </span> </td>
-                            </tr>
-                            <tr>
-                                <th>gender</th>
-                                <td> <span id="gender"> </span></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="row text-end">
                         <div class="col">
-                            <a class="text-capitalize btn btn-outline-danger" href="/user/edit.html">
-                                edit
+                            <div class="row">
+                                <div class="col mx-auto" id="user_img" class="">
+
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col">
+                                    <table
+                                        class="text-capitalize d-inline-block text-center table table-striped border mx-auto w-100 rounded">
+                                        <tr >
+                                            <th>Name</th>
+                                            <td class="w-100 text-center"> <span id="first_name"> </span> <span
+                                                    id="last_name"> </span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>username</th>
+                                            <td class="w-100 text-center"> <span id="username"> </span> </td>
+                                        </tr>
+                                        <tr>
+                                            <th>phone</th>
+                                            <td class="w-100 text-center"> <span id="phone"> </span> </td>
+                                        </tr>
+                                        <tr>
+                                            <th>gender</th>
+                                            <td class="w-100 text-center"> <span id="gender"> </span></td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row text-center mt-4">
+                        <div class="col">
+                            <a class=" link-primary" href="/user/edit.html">
+                                edit user details
                             </a>
                         </div>
 
@@ -56,9 +73,6 @@
                 </div>
 
             </div>
-        </div>
-        <div class="mt-5">
-            <a href="/student/student_detail_form.html" class="btn btn-outline-primary"> Student Details </a>
         </div>
     </div>
 
