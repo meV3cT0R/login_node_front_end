@@ -1,15 +1,10 @@
-
-
 $(function() {
-    
-
     $("form#signup").submit(function(e) {
         e.preventDefault();
         $.post(`${url}/signup`,JSON.stringify({
+            name : `${$("input#first_name").val()} ${$("input#last_name").val()}`,
             username : $('input#username').val(),
             pwd : $('input#password').val(),
-            first_name : $('input#first_name').val(),
-            last_name : $('input#last_name').val(),
             phone : $('input#phone').val(),
             gender : $('input[name="gender"]').val(),
             image : $('input#image').attr("data")

@@ -19,8 +19,8 @@ function navbar () {
       .css({
         marginBottom: '20px',
         'text-transform': 'capitalize',
-        backgroundColor : "rgba(0,0,0,0.1)",
-        padding: "5px 10px"
+        backgroundColor: 'rgba(0,0,0,0.1)',
+        padding: '5px 10px'
       })
   )
   $('#navbar').append(
@@ -31,36 +31,39 @@ function navbar () {
       $('<li> </li>').append(
         $('<a> </a>')
           .addClass('nav-link')
-          
+
           .css({
             padding: '5px 10px',
-            color: "rgba(0,0,0,0.5)",
-            transition : ".3s"
-          }).hover(function(e){
+            color: 'rgba(0,0,0,0.5)',
+            transition: '.3s'
+          })
+          .hover(
+            function (e) {
               $(this).next().css({
-                  width:"100%"
+                width: '100%'
               })
 
               $(this).css({
-                color: "black"
-
+                color: 'black'
               })
-          },function(e){
-            $(this).next().css({
-                width:"0%"
-            })
-            $(this).css({
-              color: "rgba(0,0,0,0.5)"
-
-            })
-          })
+            },
+            function (e) {
+              $(this).next().css({
+                width: '0%'
+              })
+              $(this).css({
+                color: 'rgba(0,0,0,0.5)'
+              })
+            }
+          )
           .text(link.display)
-          .attr('href', link.link),$("<div></div>").css({
-            width:0,
-            height:"1px",
-            backgroundColor : "black",
-            transition : "width .3s"
-          })
+          .attr('href', link.link),
+        $('<div></div>').css({
+          width: 0,
+          height: '1px',
+          backgroundColor: 'black',
+          transition: 'width .3s'
+        })
       )
     )
   }
@@ -139,6 +142,23 @@ function formGenerator (config) {
         continue
       }
 
+      if (field.type == 'select') {
+        $(`.student-form-row-${i}-col-${j}`).append(
+          $('<div></div>').append(
+            $('<label></label>').addClass('mb-2').text(field.label)
+          )
+        )
+
+        $(`.student-form-row-${i}-col-${j}`).append($('<select> </select>').addClass("form-select").attr('name',field.name).attr('id',field.name))
+
+        for (const key in field.options) {
+          $(`.student-form-row-${i}-col-${j} select`).append(
+            $("<option></option>").attr("value",key).text(field.options[key])
+          )
+        }
+        continue
+      }
+
       $(`.student-form-row-${i}-col-${j}`).append(
         $('<div> </div>')
           .addClass('form-group')
@@ -149,9 +169,8 @@ function formGenerator (config) {
               .attr('id', field.name)
               .attr('name', field.name)
               .addClass('form-control')
-              .change(function(e) {
-                  if(field.onchange)
-                    field.onchange(e)
+              .change(function (e) {
+                if (field.onchange) field.onchange(e)
               })
           )
       )
@@ -172,15 +191,15 @@ function formGenerator (config) {
 }
 
 function encodeImageFileAsURL (e) {
-  if(e instanceof Event){
+  if (e instanceof jQuery.Event) {
     e = e.target
   }
   let file = e.files[0]
   let reader = new FileReader()
   reader.onloadend = function () {
-    $(e).attr("data",reader.result)
-    console.log('RESULT', $(e).attr("data"))
-    console.log('RESULT length', $(e).attr("data").length)
+    $(e).attr('data', reader.result)
+    console.log('RESULT', $(e).attr('data'))
+    console.log('RESULT length', $(e).attr('data').length)
   }
   reader.readAsDataURL(file)
 }

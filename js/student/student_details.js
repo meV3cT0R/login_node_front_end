@@ -4,11 +4,11 @@ $(() => {
   $('#table_container').append($('<table></table>').attr('id', 'table').addClass("table table-striped"))
 
   const cols = {
-    first_name: 'First Name',
-    last_name: 'Last Name',
-    college_name: 'College Name',
+    rollNo: 'Roll No.',
+    firstName: 'First Name',
+    lastName: 'Last Name',
     faculty: 'Faculty',
-    college_year: 'College Year'
+    currentYear: 'College Year'
   }
 
   $('#table_container table').append(
