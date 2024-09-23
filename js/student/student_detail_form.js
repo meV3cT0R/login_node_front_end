@@ -145,12 +145,16 @@ $(function () {
           gender: genderValue,
           email: $('input#email').val(),
           phone: $('input#phone').val(),
-          dob: getVal('dob'),
+          dob: dateYMD(new Date(getVal('dob'))),
           faculty: $('select#faculty').val(),
-          joinedOn: getVal('joinedOn'),
+          joinedOn: dateYMD(new Date(getVal('joinedOn'))),
           rollNo: getVal('rollNo'),
           currentYear: getVal('current_year'),
-          image: $('input#image').attr('data'),
+          file: {
+            fileType : "",
+            fileData : $('input#image').attr('data'),
+            fileName : "pfp"
+          },
           address: getVal('address'),
           country: getVal('country'),
           city: getVal('city')
@@ -159,7 +163,7 @@ $(function () {
         type: 'post'
       })
         .done(function (data, status) {
-          window.open('/user/home.html', '_self')
+          window.open('/student/student_details.html', '_self')
         })
         .fail(function (data, status) {
           console.log(data.responseJSON.message)

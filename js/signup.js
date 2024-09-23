@@ -2,12 +2,16 @@ $(function() {
     $("form#signup").submit(function(e) {
         e.preventDefault();
         $.post(`${url}/signup`,JSON.stringify({
-            name : `${$("input#first_name").val()} ${$("input#last_name").val()}`,
+            firstName : $("input#first_name").val(),
+            lastName :  $("input#last_name").val(),
             username : $('input#username').val(),
-            pwd : $('input#password').val(),
+            password : $('input#password').val(),
             phone : $('input#phone').val(),
             gender : $('input[name="gender"]').val(),
-            image : $('input#image').attr("data")
+            avatar : $('input#image').attr("data"),
+            dob : $('input#dob').val(),
+            email : $('input#email').val(),
+            address : $('input#address').val(),
         })).done(function(data,status) {
             window.open("/","_self");
         }).fail(function(data,status) {

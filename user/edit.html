@@ -30,12 +30,12 @@
                     </div>
 
                     <div class="form-group mb-4">
-                        <label for="first_name"> First Name </label>
-                        <input class="form-control" type="text" id="first_name">
+                        <label for="firstName"> First Name </label>
+                        <input class="form-control" type="text" id="firstName">
                     </div>
                     <div class="form-group mb-4">
-                        <label for="last_name"> Last Name </label>
-                        <input class="form-control" type="text" id="last_name">
+                        <label for="lastName"> Last Name </label>
+                        <input class="form-control" type="text" id="lastName">
                     </div>
                     <div class="form-group mb-4">
                         <label for="username"> Username </label>
@@ -58,6 +58,16 @@
                         <input type="radio" id="female" value="female" name="gender" class="form-check-input">
                     </div>
 
+                    <div class="form-group mb-4 mt-4">
+                        <label for="avatar"> Avatar </label>
+                        <input class="form-control" type="file" id="avatar" onchange="encodeImageFileAsURL(this)">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="imageHelper" id="imageHelper">
+
+                        </div>
+                    </div>
                     <div class="form-group mb-4 text-end">
                         <button class="btn btn-outline-success">
                             edit

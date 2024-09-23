@@ -13,7 +13,7 @@ $(function () {
       `${url}/login`,
       JSON.stringify({
         username: $('input#username').val(),
-        pwd: $('input#password').val()
+        password: $('input#password').val()
       }),
       function (data, status, xhr) {
         if(status!="success") return $('#login_error').text("Something went wrong");
