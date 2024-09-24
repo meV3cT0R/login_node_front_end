@@ -18,7 +18,8 @@ $(function () {
 
   $.get(`${url}/faculty`, (dataFaculty, status) => {
     const facultyData = {}
-    for (const key in dataFaculty) facultyData[dataFaculty[key].id] = dataFaculty[key].abbr
+    for (const key in dataFaculty)
+      facultyData[dataFaculty[key].id] = dataFaculty[key].abbr
     const formConfig = {
       parent: '#student_detail_edit_form',
       fields: [
@@ -219,21 +220,19 @@ $(function () {
 
       let genderValue = data.gender
 
-      
-
-      addImageHelper();
+      addImageHelper()
 
       $('input#gender').change(e => {
         genderValue = e.target.value
       })
-      
+
       $('#student_detail_edit_form').submit(e => {
         e.preventDefault()
         const getVal = id => {
           return $(`input#${id}`).val()
         }
 
-        const dataTobeSent ={
+        const dataTobeSent = {
           id: data.id,
           firstName: $('input#firstName').val(),
           lastName: $('input#lastName').val(),
@@ -245,24 +244,26 @@ $(function () {
           joinedOn: dateYMD(new Date(getVal('joinedOn'))),
           rollNo: getVal('rollNo'),
           currentYear: getVal('currentYear'),
-          file: $('input#image').attr("data")?{
-              fileName: "updatedImage",
-              fileType : "jpeg",
-              formFileId : data.files[0].formFileId,
-              fileData : $('input#image').attr("data"),
-          }:null,
+          file: $('input#image').attr('data')
+            ? {
+                fileName: 'updatedImage',
+                fileType: 'jpeg',
+                formFileId: data.files[0].formFileId,
+                fileData: $('input#image').attr('data')
+              }
+            : null,
           address: getVal('address'),
           country: getVal('country'),
           city: getVal('city')
         }
-        console.log("Data To Be sent",dataTobeSent);
+        console.log('Data To Be sent', dataTobeSent)
         $.ajax({
           url: `${url}/students/update`,
           headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json'
           },
-          
+
           data: JSON.stringify(dataTobeSent),
           dataType: 'json',
           type: 'put'
@@ -270,16 +271,24 @@ $(function () {
           .done(function (data, status) {
             window.open('/student/student_details.html', '_self')
           })
-          .fail(async (data, status)=> {
-            console.log("inside failed edit");
+          .fail(async (data, status) => {
+            console.log('inside failed edit')
             console.log(data.responseJSON.message)
-            let waiting = true;
-            console.log("Waiting for buttons on modal to be clicked : ",waiting)
-            const exited = await popup("Error",data?.responseJSON?.message?.name || data?.responseJSON?.message || "Something Went Wrong");
-            waiting = false;
-            console.log("button clicked on modals and waiting : ",waiting)
+            let waiting = true
+            console.log(
+              'Waiting for buttons on modal to be clicked : ',
+              waiting
+            )
+            const exited = await popup(
+              'Error',
+              data?.responseJSON?.message?.name ||
+                data?.responseJSON?.message ||
+                'Something Went Wrong'
+            )
+            waiting = false
+            console.log('button clicked on modals and waiting : ', waiting)
 
-            console.log(exited);
+            console.log(exited)
           })
       })
     })

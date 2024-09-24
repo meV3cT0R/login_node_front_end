@@ -77,9 +77,12 @@ $(() => {
 
         if (roles == 'editor' || roles == 'admin') {
           parent.append(editButton, deleteButton)
-        } else {
-          parent.append(viewButton)
-        }
+          deleteButton.css({
+            marginRight:"10px"
+          })
+        } 
+        parent.append(viewButton)
+
         return parent
       }
     }
